@@ -8,7 +8,7 @@ don't forget to use ports : 3306
 
 
 
-now you have the node applicaiton ready for you 
+now you have the node application ready for you 
 the port of the application is : 3000
 
 
