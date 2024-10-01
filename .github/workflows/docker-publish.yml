@@ -83,7 +83,7 @@ jobs:
           
       - name: run & test the container
         run: |
-          docker run -itd -p 80:80 lidorlg/sup-app-new:main
+          docker run -itd -p 80:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
           sleep 10
           curl localhost:80
 
