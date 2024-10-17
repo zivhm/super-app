@@ -12,6 +12,7 @@ services:
             - ./mysql:/var/lib/mysql
     
     nodeapp:
+        image: zivhm/super-app-node:latest
         build:
             context: ./node
         ports:
@@ -20,6 +21,7 @@ services:
             - mysql
 
     phpapp:
+        image: zivhm/super-app-php:latest
         build:
             context: ./php
         ports:
