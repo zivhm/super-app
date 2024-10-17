@@ -29,12 +29,25 @@ pipeline {
             environment {
                 DOCKERHUB_CREDENTIALS = credentials('dockerhub-zivhm')
             }
-
             steps {
-                sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
-                sh 'docker-compose push'
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS) {
+                        docker.image('super-app').push('latest')
+                    }
+                }
             }
         }
+
+        // stage('Push') {
+        //     environment {
+        //         DOCKERHUB_CREDENTIALS = credentials('dockerhub-zivhm')
+        //     }
+
+        //     steps {
+        //         sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+        //         sh 'docker-compose push'
+        //     }
+        // }
     }
 
     post {
