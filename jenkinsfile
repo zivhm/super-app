@@ -1,5 +1,5 @@
-pipleine {
-    agent any
+pipeline {
+    agent { label 'docker-slave' }
 
     stages {
         stage('Checkout') {
