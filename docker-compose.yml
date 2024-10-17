@@ -1,0 +1,28 @@
+version: 3.8
+
+services:
+    mysql:
+        image: mysql:8.0.28
+        environment:
+            MYSQL_DATABASE: 'super-app'
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+            - '3306:3306'
+        volumes:
+            - ./mysql:/var/lib/mysql
+    
+    nodeapp:
+        build:
+            context: ./node
+        ports:
+            - '3000:3000'
+        depends_on:
+            - mysql
+
+    phpapp:
+        build:
+            context: ./php
+        ports:
+            - '80:80'
+        depends_on:
+            - mysql
