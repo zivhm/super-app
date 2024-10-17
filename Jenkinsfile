@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/zivhm/super-app.git'
+                git branch: 'main',
+                url: 'https://github.com/zivhm/super-app.git'
+                // git 'https://github.com/zivhm/super-app.git'
             }
         }
 
